@@ -1,0 +1,49 @@
+topology.name: "VOICEGeneralTopology"
+topology.workers: 1
+topology.max.spout.pending: 2
+topology.enable.classloader: false
+
+storm.cluster.mode: local
+
+jdbc.default: "{\"jdbc.driver\":\"com.mysql.jdbc.Driver\",\"jdbc.url\":\"jdbc:mysql://10.1.235.245:31306/dev_baas_bmc1?useUnicode=true&characterEncoding=UTF-8\",\"jdbc.username\":\"bmcusr01\",\"jdbc.password\":\"bmcusr01_123\"}"
+
+kafka.spout.consumer.addr: "10.1.245.5:29181,10.1.245.6:29181,10.1.245.7:29181"
+kafka.spout.topic: "ECBCA29571714183B23A630E2311DD66_MDS003_195839411"
+kafka.spout.zk.server: "10.1.245.5,10.1.245.6,10.1.245.7"
+kafka.spout.zk.port: "29181"
+kafka.spout.parallel.num: "1"
+
+hbase.param: "{\"hbase.zookeeper.property.clientPort\":\"49181\",\"hbase.master\":\"BIU-DEV-BaaS-app1\",\"hbase.zookeeper.quorum\":\"BIU-DEV-BaaS-app1,BIU-DEV-BaaS-app2,BIU-DEV-BaaS-app3\"}"
+
+bmc.gprs.bolt.output.field: {"unpacking":"service_id,tenant_id,sn,data","duplicate_checking":"data","rule_adapt":"data","billing":"data"}
+
+#ccs config
+#ccs.appname: "aiopt-baas-dshm"
+#ccs.zk_address: "10.1.130.84:39181"
+paas.auth.url: "http://10.1.245.4:19811/service-portal-uac-web/service/auth"
+paas.auth.pid: "87EA5A771D9647F1B5EBB600812E3067"
+paas.ccs.serviceid: "CCS008"
+paas.ccs.servicepassword: "123456"
+
+billing.output.mds.broker.list: "10.1.130.84:39091"
+billing.output.mds.authAddr: "http://10.1.245.4:19811/service-portal-uac-web/service/auth"
+billing.output.mds.servicePasswd: "123456"
+billing.output.mds.authPid: "87EA5A771D9647F1B5EBB600812E3067"
+
+billing.output.mds.credit.control.partition: "2"
+billing.output.mds.credit.control.topic: "ECBCA29571714183B23A630E2311DD66_MDS002_1529549922"
+billing.output.mds.credit.control.srvId: "MDS002"
+billing.output.mds.account.topic: "ECBCA29571714183B23A630E2311DD66_MDS004_1106501714"
+billing.output.mds.account.partition: "2"
+billing.output.mds.account.srvId: "MDS004"
+billing.output.mds.stats.topic: ""
+billing.output.mds.stats.partition: "5"
+billing.output.mds.resourcebook.topic: "ECBCA29571714183B23A630E2311DD66_MDS012_758885827"
+billing.output.mds.resourcebook.partition: "2"
+billing.output.mds.resourcebook.srvId: "MDS012"
+
+bmc.voice.unpacking.executor.num: "1"
+bmc.voice.duplicate.checking.executor.num: "1"
+bmc.voice.rule.adapt.executor.num: "1"
+bmc.voice.billing.executor.num: "1"
+
